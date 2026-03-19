@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Estudio – Valeria &amp; Emilia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --blue:    #1B6EE8;
+      --blue-lt: #5A9EFF;
+      --green:   #17C964;
+      --yellow:  #FFD700;
+      --pink:    #FF4D9E;
+      --orange:  #FF7A1A;
+      --purple:  #9B5DE5;
+      --red:     #FF3A3A;
+      --cream:   #FFFBF0;
+      --dark:    #12112A;
+      --card-r:  18px;
+      --shadow:  0 6px 32px rgba(0,0,0,.14);
+    }
+
+    /* ── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── STAR-FIELD BACKGROUND ──────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: -2;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 5%,  #d6eaff 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 90% 90%, #ffe0f5 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 50% 50%, #fffbe0 0%, transparent 70%),
+        var(--cream);
+    }
+
+    /* floating blobs */
+    .blob {
+      position: fixed; border-radius: 50%; filter: blur(60px);
+      opacity: .35; z-index: -1; animation: drift 12s ease-in-out infinite alternate;
+    }
+    .blob-1 { width:320px; height:320px; background:var(--blue-lt);  top:-80px;  left:-80px;  animation-delay:0s; }
+    .blob-2 { width:260px; height:260px; background:var(--pink);      bottom:-60px; right:-60px; animation-delay:3s; }
+    .blob-3 { width:200px; height:200px; background:var(--yellow);    top:40%;    left:60%;    animation-delay:6s; }
+    @keyframes drift { from{transform:translate(0,0) scale(1)} to{transform:translate(30px,20px) scale(1.08)} }
+
+    /* ── HEADER ─────────────────────────────────────────── */
+    header {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 20px 40px;
+      background: rgba(255,255,255,.72); backdrop-filter: blur(12px);
+      border-bottom: 2px solid rgba(27,110,232,.12);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .logo-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      border-radius: 14px;
+      display: grid; place-items: center;
+      font-size: 26px; box-shadow: 0 4px 16px rgba(27,110,232,.4);
+      animation: spin-slow 20s linear infinite;
+    }
+    @keyframes spin-slow { to { transform: rotate(360deg); } }
+    .logo-text h1 {
+      font-family: 'Baloo 2', cursive; font-size: 1.45rem; font-weight: 800;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+    }
+    .logo-text span { font-size: .78rem; color: #666; font-weight: 600; }
+
+    .header-badges { display: flex; gap: 10px; flex-wrap: wrap; }
+    .badge {
+      padding: 6px 16px; border-radius: 99px; font-size: .78rem; font-weight: 700;
+      letter-spacing: .3px; cursor: default;
+    }
+    .badge-val { background: linear-gradient(135deg, var(--blue), var(--blue-lt)); color:#fff; }
+    .badge-emi { background: linear-gradient(135deg, var(--pink), var(--orange)); color:#fff; }
+
+    /* ── HERO ───────────────────────────────────────────── */
+    .hero {
+      text-align: center; padding: 60px 24px 40px;
+    }
+    .hero-greeting {
+      font-family: 'Baloo 2', cursive; font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 800; line-height: 1.15;
+    }
+    .hero-greeting .hi { color: var(--dark); }
+    .hero-greeting .val { color: var(--blue); }
+    .hero-greeting .amp { color: var(--purple); }
+    .hero-greeting .emi { color: var(--pink); }
+    .hero-sub {
+      margin-top: 12px; font-size: 1.05rem; color: #555; font-weight: 600;
+    }
+    .hero-sub .school { color: var(--blue); font-weight: 800; }
+
+    /* ── SECTION TITLE ──────────────────────────────────── */
+    .section { padding: 0 24px 60px; max-width: 1180px; margin: 0 auto; }
+    .section-title {
+      display: flex; align-items: center; gap: 12px;
+      font-family: 'Baloo 2', cursive; font-size: 1.6rem; font-weight: 800;
+      margin-bottom: 28px;
+    }
+    .section-title .pill {
+      padding: 4px 14px; border-radius: 99px; font-size: .85rem; font-weight: 700; color: #fff;
+    }
+
+    /* ── STUDENT CARDS ──────────────────────────────────── */
+    .students-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+    .student-card {
+      border-radius: var(--card-r); padding: 28px 28px 24px;
+      position: relative; overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .student-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,.18); }
+    .student-card.val { background: linear-gradient(145deg, #1B6EE8, #5A9EFF); }
+    .student-card.emi { background: linear-gradient(145deg, #FF4D9E, #FF7A1A); }
+
+    .student-card::after {
+      content: attr(data-emoji);
+      position: absolute; right: -10px; bottom: -10px;
+      font-size: 100px; opacity: .18; transform: rotate(-10deg);
+      pointer-events: none; user-select: none;
+    }
+    .sc-grade {
+      display: inline-block; background: rgba(255,255,255,.25);
+      border-radius: 99px; padding: 4px 14px; font-size: .78rem; font-weight: 700; color: #fff;
+      margin-bottom: 14px;
+    }
+    .sc-name {
+      font-family: 'Baloo 2', cursive; font-size: 2rem; font-weight: 800; color: #fff;
+      line-height: 1;
+    }
+    .sc-school { font-size: .8rem; color: rgba(255,255,255,.8); font-weight: 600; margin: 4px 0 20px; }
+    .sc-subjects {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .sc-subject {
+      background: rgba(255,255,255,.22); backdrop-filter: blur(6px);
+      border-radius: 10px; padding: 8px 14px;
+      color: #fff; font-size: .82rem; font-weight: 700;
+      cursor: pointer; text-decoration: none;
+      transition: background .2s, transform .2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .sc-subject:hover { background: rgba(255,255,255,.4); transform: scale(1.05); }
+
+    /* ── SUBJECTS DETAIL GRID ───────────────────────────── */
+    .subjects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .sub-card {
+      border-radius: var(--card-r); padding: 24px 20px;
+      background: #fff; box-shadow: var(--shadow);
+      display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
+      cursor: pointer; text-decoration: none; color: inherit;
+      border-top: 5px solid var(--accent, #1B6EE8);
+      transition: transform .22s, box-shadow .22s;
+    }
+    .sub-card:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(0,0,0,.16); }
+    .sub-icon { font-size: 2rem; }
+    .sub-name { font-family: 'Baloo 2', cursive; font-size: 1.1rem; font-weight: 800; }
+    .sub-who {
+      font-size: .72rem; font-weight: 700; padding: 3px 10px; border-radius: 99px; color: #fff;
+    }
+    .sub-desc { font-size: .8rem; color: #666; line-height: 1.4; }
+
+    /* ── FUN TOOLS ──────────────────────────────────────── */
+    .tools-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 18px;
+    }
+    .tool-card {
+      border-radius: var(--card-r); padding: 22px 18px;
+      background: #fff; box-shadow: var(--shadow);
+      text-align: center; cursor: pointer; text-decoration: none; color: inherit;
+      transition: transform .22s, box-shadow .22s;
+      border-bottom: 4px solid var(--tc, #FFD700);
+    }
+    .tool-card:hover { transform: translateY(-5px) rotate(-1deg); box-shadow: 0 14px 40px rgba(0,0,0,.16); }
+    .tool-icon { font-size: 2.4rem; margin-bottom: 10px; display: block; }
+    .tool-name { font-family: 'Baloo 2', cursive; font-size: 1rem; font-weight: 800; }
+    .tool-desc { font-size: .75rem; color: #777; margin-top: 4px; }
+
+    /* ── MOTIVATIONAL BANNER ────────────────────────────── */
+    .banner {
+      margin: 0 24px 60px;
+      border-radius: 22px;
+      background: linear-gradient(120deg, var(--dark) 0%, #2a1f6e 100%);
+      padding: 36px 40px;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.22);
+      position: relative; overflow: hidden;
+    }
+    .banner::before {
+      content: '⭐🌟💫✨🌠';
+      position: absolute; top: -10px; right: 20px;
+      font-size: 80px; opacity: .12; letter-spacing: -10px;
+      transform: rotate(15deg);
+    }
+    .banner-text h2 {
+      font-family: 'Baloo 2', cursive; font-size: 1.6rem; font-weight: 800;
+      color: var(--yellow); margin-bottom: 8px;
+    }
+    .banner-text p { color: rgba(255,255,255,.8); font-size: .92rem; line-height: 1.6; }
+    .banner-emoji { font-size: 3.5rem; flex-shrink: 0; animation: bounce .8s ease infinite alternate; }
+    @keyframes bounce { from{transform:translateY(0)} to{transform:translateY(-8px)} }
+
+    /* ── PETS CORNER ────────────────────────────────────── */
+    .pets {
+      display: flex; gap: 20px; flex-wrap: wrap;
+    }
+    .pet-card {
+      background: #fff; border-radius: var(--card-r); padding: 20px 24px;
+      box-shadow: var(--shadow); flex: 1; min-width: 200px;
+      border-left: 6px solid var(--pc, var(--green));
+    }
+    .pet-name { font-family: 'Baloo 2', cursive; font-size: 1.3rem; font-weight: 800; }
+    .pet-desc { font-size: .82rem; color: #666; margin-top: 4px; }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    footer {
+      text-align: center; padding: 32px 24px;
+      font-size: .8rem; color: #888; border-top: 1px solid #e8e8e8;
+    }
+    footer strong { color: var(--blue); }
+
+    /* ── ANIMATIONS on load ─────────────────────────────── */
+    .fade-up {
+      opacity: 0; transform: translateY(28px);
+      animation: fadeUp .6s ease forwards;
+    }
+    @keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
+    .delay-1 { animation-delay: .1s; }
+    .delay-2 { animation-delay: .2s; }
+    .delay-3 { animation-delay: .3s; }
+    .delay-4 { animation-delay: .4s; }
+    .delay-5 { animation-delay: .5s; }
+    .delay-6 { animation-delay: .6s; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 600px) {
+      header { padding: 16px 20px; }
+      .hero   { padding: 40px 16px 28px; }
+      .section { padding: 0 16px 44px; }
+      .banner { padding: 28px 22px; margin: 0 16px 44px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- floating blobs -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<!-- ── HEADER ─────────────────────────────────────── -->
+<header>
+  <div class="logo">
+    <div class="logo-icon">🚀</div>
+    <div class="logo-text">
+      <h1>Portal de Estudio</h1>
+      <span>Portal de Estudio 2026</span>
+    </div>
+  </div>
+  <div class="header-badges">
+    <span class="badge badge-val">📘 Valeria · 4.° Primaria</span>
+    <span class="badge badge-emi">🎀 Emilia · 1.° Primaria</span>
+  </div>
+</header>
+
+<!-- ── HERO ───────────────────────────────────────── -->
+<div class="hero fade-up">
+  <p class="hero-greeting">
+    <span class="hi">¡Hola, </span>
+    <span class="val">Valeria</span>
+    <span class="amp"> &amp; </span>
+    <span class="emi">Emilia</span>
+    <span class="hi">! 🎉</span>
+  </p>
+  <p class="hero-sub">Tu espacio de aprendizaje ✨</p>
+</div>
+
+<!-- ── STUDENT CARDS ──────────────────────────────── -->
+<section class="section fade-up delay-1">
+  <div class="section-title">
+    📚 <span>Nuestras Estudiantes</span>
+    <span class="pill" style="background:var(--blue)">2026</span>
+  </div>
+  <div class="students-grid">
+
+    <!-- VALERIA -->
+    <div class="student-card val" data-emoji="🏀">
+      <div class="sc-grade">📘 Cuarto Primaria</div>
+      <div class="sc-name">Valeria</div>
+      <div class="sc-school">📚 2026</div>
+      <div class="sc-subjects">
+        <a href="valeria/matematica.html" class="sc-subject">➕ Matemática</a>
+        <a href="valeria/espanol.html"    class="sc-subject">📖 Español</a>
+        <a href="valeria/ciencias.html"   class="sc-subject">🔬 Ciencias</a>
+        <a href="valeria/sociales.html"   class="sc-subject">🌎 Sociales</a>
+        <a href="valeria/aleman.html"     class="sc-subject">🇩🇪 Alemán</a>
+        <a href="valeria/ingles.html"     class="sc-subject">🇺🇸 Inglés</a>
+        <a href="valeria/arte.html"       class="sc-subject">🎨 Arte</a>
+        <a href="valeria/musica.html" class="sc-subject">🎵 Música</a>
+      </div>
+    </div>
+
+    <!-- EMILIA -->
+    <div class="student-card emi" data-emoji="⭐">
+      <div class="sc-grade">🎀 Primer Primaria</div>
+      <div class="sc-name">Emilia</div>
+      <div class="sc-school">📚 2026</div>
+      <div class="sc-subjects">
+        <a href="emilia/matematica.html"  class="sc-subject">➕ Matemática</a>
+        <a href="emilia/lectura.html"     class="sc-subject">📖 Lectura</a>
+        <a href="emilia/escritura.html"   class="sc-subject">✏️ Escritura</a>
+        <a href="emilia/medio-social.html" class="sc-subject">🌿 Medio Social y Natural</a>
+        <a href="emilia/aleman.html"      class="sc-subject">🇩🇪 Alemán</a>
+        <a href="emilia/ingles.html"      class="sc-subject">🇺🇸 Inglés</a>
+        <a href="emilia/destrezas.html"   class="sc-subject">🛠️ Destrezas</a>
+        <a href="emilia/musica.html"      class="sc-subject">🎵 Música</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── MOTIVATIONAL BANNER ────────────────────────── -->
+<div class="banner fade-up delay-2">
+  <div class="banner-emoji">🏋🏽‍♂️</div>
+  <div class="banner-text">
+    <h2>¡Tú puedes lograrlo! 💪</h2>
+    <p>
+      Cada tarea completada es un gradiente alcanzado. Cada página leída es un sprint ganado.<br>
+      ¡Estudiar también es un deporte, y ustedes son campeonas! 🏀🌟
+    </p>
+  </div>
+</div>
+
+<!-- ── MATERIA DETALLE ─────────────────────────────── -->
+<section class="section fade-up delay-3">
+  <div class="section-title">
+    🗂️ <span>Todas las Materias</span>
+    <span class="pill" style="background:var(--purple)">Acceso Rápido</span>
+  </div>
+  <div class="subjects-grid">
+
+    <!-- Valeria subjects -->
+    <a href="valeria/matematica.html" class="sub-card" style="--accent:#1B6EE8">
+      <span class="sub-icon">➕</span>
+      <span class="sub-name">Matemática</span>
+      <span class="sub-who" style="background:var(--blue)">Valeria</span>
+      <span class="sub-desc">Multiplicación, división, fracciones y más.</span>
+    </a>
+    <a href="valeria/espanol.html" class="sub-card" style="--accent:#9B5DE5">
+      <span class="sub-icon">📖</span>
+      <span class="sub-name">Español</span>
+      <span class="sub-who" style="background:var(--purple)">Valeria</span>
+      <span class="sub-desc">Lectura, gramática, redacción y ortografía.</span>
+    </a>
+    <a href="valeria/ciencias.html" class="sub-card" style="--accent:#17C964">
+      <span class="sub-icon">🔬</span>
+      <span class="sub-name">Ciencias Nat.</span>
+      <span class="sub-who" style="background:var(--green)">Valeria</span>
+      <span class="sub-desc">Cuerpo humano, plantas, animales, ecosistemas.</span>
+    </a>
+    <a href="valeria/sociales.html" class="sub-card" style="--accent:#FF7A1A">
+      <span class="sub-icon">🌎</span>
+      <span class="sub-name">Sociales</span>
+      <span class="sub-who" style="background:var(--orange)">Valeria</span>
+      <span class="sub-desc">Guatemala, historia, geografía y cultura.</span>
+    </a>
+    <a href="valeria/aleman.html" class="sub-card" style="--accent:#FFD700">
+      <span class="sub-icon">🇩🇪</span>
+      <span class="sub-name">Alemán</span>
+      <span class="sub-who" style="background:#c8a000; color:#fff">Valeria</span>
+      <span class="sub-desc">Vocabulario, conversación y gramática.</span>
+    </a>
+    <a href="valeria/ingles.html" class="sub-card" style="--accent:#FF3A3A">
+      <span class="sub-icon">🇺🇸</span>
+      <span class="sub-name">Inglés</span>
+      <span class="sub-who" style="background:var(--red)">Valeria</span>
+      <span class="sub-desc">Reading, writing, vocabulary and grammar.</span>
+    </a>
+
+    <!-- Emilia subjects -->
+    <a href="emilia/matematica.html" class="sub-card" style="--accent:#FF4D9E">
+      <span class="sub-icon">🔢</span>
+      <span class="sub-name">Matemática</span>
+      <span class="sub-who" style="background:var(--pink)">Emilia</span>
+      <span class="sub-desc">Números, sumas, restas y figuras geométricas.</span>
+    </a>
+    <a href="emilia/lectura.html" class="sub-card" style="--accent:#FF7A1A">
+      <span class="sub-icon">📚</span>
+      <span class="sub-name">Lectura</span>
+      <span class="sub-who" style="background:var(--orange)">Emilia</span>
+      <span class="sub-desc">Sílabas, palabras, oraciones y cuentos.</span>
+    </a>
+    <a href="emilia/escritura.html" class="sub-card" style="--accent:#9B5DE5">
+      <span class="sub-icon">✏️</span>
+      <span class="sub-name">Escritura</span>
+      <span class="sub-who" style="background:var(--purple)">Emilia</span>
+      <span class="sub-desc">Letras, palabras y dictados divertidos.</span>
+    </a>
+    <a href="emilia/aleman.html" class="sub-card" style="--accent:#FFD700">
+      <span class="sub-icon">🇩🇪</span>
+      <span class="sub-name">Alemán</span>
+      <span class="sub-who" style="background:#c8a000; color:#fff">Emilia</span>
+      <span class="sub-desc">Primeras palabras y saludos en alemán.</span>
+    </a>
+    <a href="emilia/ingles.html" class="sub-card" style="--accent:#17C964">
+      <span class="sub-icon">🇺🇸</span>
+      <span class="sub-name">Inglés</span>
+      <span class="sub-who" style="background:var(--green)">Emilia</span>
+      <span class="sub-desc">Colors, numbers, animals and more!</span>
+    </a>
+    <a href="emilia/musica.html" class="sub-card" style="--accent:#1B6EE8">
+      <span class="sub-icon">🎵</span>
+      <span class="sub-name">Música</span>
+      <span class="sub-who" style="background:var(--blue)">Emilia</span>
+      <span class="sub-desc">Ritmo, canciones y notas musicales.</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- ── HERRAMIENTAS ────────────────────────────────── -->
+<section class="section fade-up delay-4">
+  <div class="section-title">
+    🛠️ <span>Herramientas de Estudio</span>
+    <span class="pill" style="background:var(--green)">¡Divertido!</span>
+  </div>
+  <div class="tools-grid">
+    <a href="herramientas/flashcards.html" class="tool-card" style="--tc:var(--blue)">
+      <span class="tool-icon">🃏</span>
+      <span class="tool-name">Flashcards</span>
+      <span class="tool-desc">Repasa con tarjetas interactivas</span>
+    </a>
+    <a href="herramientas/calculadora.html" class="tool-card" style="--tc:var(--green)">
+      <span class="tool-icon">🧮</span>
+      <span class="tool-name">Calculadora</span>
+      <span class="tool-desc">Operaciones matemáticas</span>
+    </a>
+    <a href="herramientas/timer.html" class="tool-card" style="--tc:var(--orange)">
+      <span class="tool-icon">⏱️</span>
+      <span class="tool-name">Temporizador</span>
+      <span class="tool-desc">Estudia en bloques Pomodoro</span>
+    </a>
+    <a href="herramientas/diccionario.html" class="tool-card" style="--tc:var(--purple)">
+      <span class="tool-icon">📙</span>
+      <span class="tool-name">Diccionario</span>
+      <span class="tool-desc">Español, Inglés y Alemán</span>
+    </a>
+    <a href="herramientas/notas.html" class="tool-card" style="--tc:var(--yellow)">
+      <span class="tool-icon">📝</span>
+      <span class="tool-name">Mis Notas</span>
+      <span class="tool-desc">Escribe y guarda tus apuntes</span>
+    </a>
+    <a href="herramientas/quiz.html" class="tool-card" style="--tc:var(--pink)">
+      <span class="tool-icon">🎯</span>
+      <span class="tool-name">Quiz</span>
+      <span class="tool-desc">Pon a prueba tu conocimiento</span>
+    </a>
+    <a href="herramientas/calendario.html" class="tool-card" style="--tc:var(--red)">
+      <span class="tool-icon">📅</span>
+      <span class="tool-name">Calendario</span>
+      <span class="tool-desc">Tareas, exámenes y eventos</span>
+    </a>
+    <a href="herramientas/videos.html" class="tool-card" style="--tc:var(--blue-lt)">
+      <span class="tool-icon">🎬</span>
+      <span class="tool-name">Videos</span>
+      <span class="tool-desc">Videos educativos seleccionados</span>
+    </a>
+  </div>
+</section>
+
+<!-- ── INSPIRACIÓN DEPORTIVA ──────────────────────── -->
+<section class="section fade-up delay-5">
+  <div class="section-title">
+    🏀 <span>Inspiración para Campeonas</span>
+    <span class="pill" style="background:var(--orange)">¡A ganar!</span>
+  </div>
+  <div class="subjects-grid" style="grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));">
+    <div class="sub-card" style="--accent:#1B6EE8; cursor:default">
+      <span class="sub-icon">🏀</span>
+      <span class="sub-name">Basketball</span>
+      <span class="sub-desc">"El talento gana juegos, el trabajo en equipo gana campeonatos."</span>
+    </div>
+    <div class="sub-card" style="--accent:#FF3A3A; cursor:default">
+      <span class="sub-icon">🏃‍♀️</span>
+      <span class="sub-name">Atletismo</span>
+      <span class="sub-desc">La práctica constante te hace alcanzar tus metas.</span>
+    </div>
+    <div class="sub-card" style="--accent:#FFD700; cursor:default">
+      <span class="sub-icon">🏋️‍♀️</span>
+      <span class="sub-name">Pesas Olímpico</span>
+      <span class="sub-desc">Disciplina, técnica y fuerza.</span>
+    </div>
+    <div class="sub-card" style="--accent:#17C964; cursor:default">
+      <span class="sub-icon">⚾</span>
+      <span class="sub-name">Baseball</span>
+      <span class="sub-desc">Tres strikes afuera… ¡y seguimos al bate!</span>
+    </div>
+    <div class="sub-card" style="--accent:#23 Jordan; --accent:#23272A; cursor:default" style="--accent:#222">
+      <span class="sub-icon">🐐</span>
+      <span class="sub-name">Jordan #23</span>
+      <span class="sub-desc">"I've failed over and over again. That's why I succeed."</span>
+    </div>
+    <div class="sub-card" style="--accent:#9B5DE5; cursor:default">
+      <span class="sub-icon">⚔️</span>
+      <span class="sub-name">Star Wars</span>
+      <span class="sub-desc">"May the Force be with you." — siempre.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── MASCOTAS ────────────────────────────────────── -->
+<section class="section fade-up delay-6">
+  <div class="section-title">
+    🐾 <span>Nuestras Perritas</span>
+    <span class="pill" style="background:var(--green)">¡Las amamos!</span>
+  </div>
+  <div class="pets">
+    <div class="pet-card" style="--pc:var(--blue)">
+      <div style="font-size:2.5rem">🐶</div>
+      <div class="pet-name">Toribia</div>
+      <div class="pet-desc">La guardiana leal del portal de estudio. ¡Siempre lista para acompañar las tareas!</div>
+    </div>
+    <div class="pet-card" style="--pc:var(--pink)">
+      <div style="font-size:2.5rem">🐕</div>
+      <div class="pet-name">Matilde</div>
+      <div class="pet-desc">Experta en dar ánimos con un ladrido justo cuando más se necesita. 🐾</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <p>
+    Hecho con ❤️ para <strong>Valeria</strong> y <strong>Emilia</strong> • Año escolar 2026
+  </p>
+</footer>
+
+</body>
+</html>
