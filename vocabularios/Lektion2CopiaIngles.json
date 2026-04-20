@@ -12,7 +12,7 @@
     "audioDisponible": true,
     "idioma": "de-DE",
     "rutaVocabulario": "vocabularios/Lektion2CopiaIngles.json",
-    "rutaCSS": "css/StylesLektions.css",
+    "rutaCSS": "css/VocabularyCityWellDone.css",
     "googleFonts": "https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap",
     "rutaInicio": "cuartoaleman.html",
     "storagePrefix": "aleman_l2",
