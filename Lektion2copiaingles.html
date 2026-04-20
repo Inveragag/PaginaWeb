@@ -95,7 +95,7 @@
   ============================================================ -->
 <!-- Fuentes: CONFIG.configuracion.googleFonts -->
 <!-- CSS:     CONFIG.configuracion.rutaCSS     -->
-<!-- JS:      js/VocabularyCityWellDone.js — aplica colores del JSON como variables CSS -->
+<!-- JS:      js/Lektion2CopiaIngles.js — aplica colores del JSON como variables CSS -->
 
 <!-- ESTILOS PARA PANTALLA DE CARGA -->
 <style>
@@ -1156,7 +1156,7 @@ function aplicarConfiguracion() {
   if (cfg.fontBody)    document.documentElement.style.setProperty('--font-body',    cfg.fontBody);
 
   // ── Colores CSS: delega al JS externo que lee la estructura completa del JSON
-  // js/VocabularyCityWellDone.js → aplicarColoresCSS(colores)
+  // js/Lektion2CopiaIngles.js → aplicarColoresCSS(colores)
   if (typeof aplicarColoresCSS === 'function') {
     aplicarColoresCSS(tema.colores);
   }
