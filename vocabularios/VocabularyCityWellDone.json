@@ -1,0 +1,643 @@
+{
+  "configuracion": {
+    "titulo": "Vocabulario",
+    "tema": "City & Well Done → Detective Edition",
+    "subtitulo": "City, Actions & Praise",
+    "tituloPagina": "City & Well Done – Vocabulary Quiz",
+    "iconosHeader": [
+      "🕵️",
+      "🔍",
+      "📜"
+    ],
+    "audioDisponible": true,
+    "idioma": "en-US",
+    "rutaVocabulario": "vocabularios/VocabularyCityWellDone.json",
+    "rutaCSS": "css/VocabularyCityWellDone.css",
+    "googleFonts": "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Special+Elite&display=swap",
+    "rutaInicio": "cuartoingles.html",
+    "storagePrefix": "vcwd",
+    "mostrarBorrarBitacora": true,
+    "fontPrimary": "'Special Elite', cursive",
+    "fontDisplay": "'Playfair Display', serif",
+    "fontBody": "'Crimson Text', serif"
+  },
+  "niveles": {
+    "nivel1": {
+      "icono": "🔍",
+      "nombre": "Aprendiz",
+      "direccion": "Inglés → Español",
+      "tipo": "Selección múltiple",
+      "badge": "NIVEL 1"
+    },
+    "nivel2": {
+      "icono": "🕵️",
+      "nombre": "Detective",
+      "direccion": "Inglés → Español",
+      "tipo": "Selección múltiple + V/F",
+      "badge": "NIVEL 2"
+    },
+    "nivel3": {
+      "icono": "🏆",
+      "nombre": "Inspector",
+      "direccion": "Español → Inglés",
+      "tipo": "Escritura",
+      "badge": "NIVEL 3"
+    },
+    "nivel4": {
+      "icono": "⭐",
+      "nombre": "Maestro Detective",
+      "direccion": "Mezclado",
+      "tipo": "Todo mezclado",
+      "badge": "NIVEL 4"
+    }
+  },
+  "temaVisual": {
+    "iconoCarga": "🔍",
+    "decorLoading": [
+      "🕵️",
+      "📚",
+      "🔍",
+      "📜"
+    ],
+    "colores": {
+      "_comentario": "Fuente única de colores. Para cambiar el tema, solo modifica estos valores. El JS los aplica como variables CSS --nombre.",
+      "base": {
+        "_comentario_base": "Colores sólidos. Cada clave genera la variable CSS --nombre (ej: fondo-pagina → --fondo-pagina).",
+        "fondo-pagina": "#F5EDD8",
+        "fondo-secundario": "#E8D9B8",
+        "borde-suave": "#D4C09A",
+        "fondo-tarjeta": "#FAF3E4",
+        "texto-principal": "#2C1A0E",
+        "texto-secundario": "#4A2E18",
+        "texto-descripcion": "#7B5C3A",
+        "texto-tenue": "#A07850",
+        "acento-dorado": "#C9922A",
+        "acento-dorado-claro": "#E8B84B",
+        "texto-sobre-oscuro": "#F5D98A",
+        "color-error": "#8B2E2E",
+        "color-correcto": "#2E5E3A",
+        "color-seleccion": "#2E3E6E",
+        "texto-chip-correcto": "#d8f0de",
+        "texto-chip-error": "#ffd0d0",
+        "color-modal-especial": "#7B3F9E",
+        "color-modal-especial-oscuro": "#5a2d7a"
+      },
+      "tints": {
+        "_comentario_tints": "Variantes con opacidad. La clave debe coincidir con una clave en 'base'. Genera --clave-opacidad (ej: --acento-dorado-05).",
+        "acento-dorado": {
+          "05": 0.5,
+          "045": 0.45,
+          "04": 0.4,
+          "035": 0.35,
+          "03": 0.3,
+          "02": 0.2,
+          "015": 0.15,
+          "012": 0.12,
+          "01": 0.1,
+          "009": 0.09,
+          "008": 0.08,
+          "006": 0.06,
+          "005": 0.05
+        },
+        "color-error": {
+          "07": 0.7,
+          "04": 0.4,
+          "03": 0.3,
+          "025": 0.25,
+          "02": 0.2,
+          "016": 0.16,
+          "01": 0.1,
+          "008": 0.08,
+          "006": 0.06
+        },
+        "color-correcto": {
+          "07": 0.7,
+          "04": 0.4,
+          "03": 0.3,
+          "025": 0.25,
+          "016": 0.16,
+          "012": 0.12,
+          "008": 0.08
+        },
+        "color-seleccion": {
+          "04": 0.4,
+          "03": 0.3,
+          "025": 0.25,
+          "02": 0.2,
+          "018": 0.18,
+          "015": 0.15,
+          "01": 0.1
+        },
+        "texto-descripcion": {
+          "018": 0.18,
+          "006": 0.06,
+          "005": 0.05
+        },
+        "color-modal-especial": {
+          "04": 0.4,
+          "025": 0.25,
+          "005": 0.07
+        }
+      },
+      "especiales": {
+        "_comentario_especiales": "Sombras y overlays que no son colores sólidos simples.",
+        "sombra-suave": "rgba(44,26,14,0.22)",
+        "sombra-profunda": "rgba(44,26,14,0.42)",
+        "fondo-modal-overlay": "rgba(44,26,14,0.62)",
+        "fondo-hover-suave": "rgba(44,26,14,0.05)",
+        "color-estrella-inactiva": "rgba(212,192,154,0.5)"
+      }
+    },
+    "emojisFlotantes": [
+      "🕵️",
+      "🔍",
+      "📜",
+      "🗝️",
+      "🏙️",
+      "🌳",
+      "🌊",
+      "💡",
+      "📋",
+      "🎻"
+    ],
+    "emojisConfetti": [
+      "🕵️",
+      "🔍",
+      "📜",
+      "🗝️",
+      "⭐",
+      "✨"
+    ],
+    "coloresConfetti": [
+      "#C9922A",
+      "#E8B84B",
+      "#7B9EC4",
+      "#2E5E3A",
+      "#8B2E2E"
+    ],
+    "cursor": "🔍",
+    "confettiVelocidad": 1800
+  },
+  "textos": {
+    "loadingTitulo": "Detective Academy",
+    "loadingFinal": "✅ ¡Listo para investigar!",
+    "loginTitulo": "🕵️ Bienvenido, Detective",
+    "loginSubtitulo": "Escribe tu nombre para comenzar la investigación",
+    "loginBoton": "🔍 Comenzar Investigación",
+    "levelTitulo": "Elige tu nivel, Detective",
+    "comprensionLabel": "🌡️ COMPRENSIÓN TOTAL DEL VOCABULARIO",
+    "comprensionInicio": "Comienza a practicar para mejorar tu nivel",
+    "vocabBtn": "📚 Vocabulario",
+    "progressBtn": "📊 Progreso",
+    "logoutBtn": "🚪 Salir",
+    "starFilterTextoInactivo": "Presiona este modo estrella para estudiar las palabras que seleccionaste",
+    "starFilterTextoActivo": "✓ MODO ESTRELLA ACTIVO - Solo palabras seleccionadas",
+    "starModeIndicador": "⭐ MODO ESTRELLA ACTIVO ⭐",
+    "vocabTitulo": "📚 Vocabulario Completo",
+    "vocabLblTotal": "Total palabras",
+    "vocabLblStarred": "Con ⭐",
+    "vocabLblMarcado": "Marcado",
+    "vocabBtnFiltroEstrella": "Con estrella",
+    "vocabBtnMarcarTodas": "✓ Marcar todas",
+    "vocabBtnQuitarTodas": "✗ Quitar todas",
+    "vocabBuscarPlaceholder": "Buscar palabra...",
+    "progressTitulo": "📊 Bitácora de Progreso",
+    "progressLblSesiones": "Sesiones",
+    "progressLblPromedio": "Promedio",
+    "progressLblMejor": "Mejor",
+    "progressLblUsuario": "Usuario",
+    "progressBtnBorrar": "🗑️ Borrar Bitácora",
+    "quizPuntos": "Puntos:",
+    "quizSonidoBtn": "🔊 Escuchar",
+    "quizVerificar": "✓ Verificar",
+    "quizSiguiente": "→ Siguiente",
+    "quizTipoMC": "SELECCIÓN MÚLTIPLE",
+    "quizTipoWrite": "ESCRIBIR",
+    "quizTipoTF": "VERDADERO o FALSO",
+    "quizTFVerdadero": "✓ VERDADERO",
+    "quizTFFalso": "✗ FALSO",
+    "resultadoLabel": "Resultado Final",
+    "resultadoNivelComp": "Nivel de Comprensión",
+    "resultadoRepetir": "🔄 Repetir Nivel",
+    "resultadoVerNiveles": "📋 Ver Todos los Niveles",
+    "volverMenu": "⬅️ Volver al Menú",
+    "volverBtn": "⬅️ Volver",
+    "salirNivelTitulo": "Salir del nivel",
+    "salirNivelMensaje": "¿Estás seguro? Perderás el progreso de esta sesión.",
+    "guardarToast": "💾 Guardado",
+    "modalIconoConfirm": "🕵️",
+    "modalIconoAlert": "⭐",
+    "modalCancelar": "✗ Cancelar",
+    "modalConfirmar": "✓ Confirmar",
+    "modalEntendido": "✓ Entendido",
+    "ttsLeyendo": "TTS Cargando...",
+    "termometroTicks": [
+      "0%",
+      "25%",
+      "50%",
+      "75%",
+      "100%"
+    ],
+    "iconoUsuario": "👤",
+    "ttsDisponible": "Audio Disponible ✓",
+    "ttsNoDisponible": "Audio no disponible",
+    "ttsLang": "en",
+    "alertErrorNombre": "Por favor escribe tu nombre",
+    "alertErrorRespuesta": "Por favor escribe una respuesta",
+    "alertCerrarSesion": "¿Estás seguro de que quieres salir?",
+    "alertMarcarTodas": "¿Quieres marcar TODAS las palabras con estrella?",
+    "alertQuitarTodas": "¿Estás seguro de quitar TODAS las estrellas?",
+    "alertSinEstrellas": "No hay estrellas para quitar",
+    "alertSinPalabras": "No hay palabras para practicar. Marca algunas con ⭐",
+    "alertBitacoraVacia": "No hay entradas que borrar.",
+    "alertBitacoraBorrada": "Bitácora borrada.",
+    "alertNoDisponible": "—",
+    "comprensionNivelTexto": "comprensión"
+  },
+  "resultados": {
+    "stars3": "⭐⭐⭐",
+    "stars2": "⭐⭐",
+    "stars1": "⭐",
+    "stars0": "",
+    "trophy1": "🏆",
+    "trophy2": "🥇",
+    "trophy3": "🥈",
+    "trophy4": "🎁",
+    "msg1": "¡INCREÍBLE, {usuario}!",
+    "msg2": "¡FANTÁSTICO, {usuario}!",
+    "msg3": "¡Bien hecho, {usuario}!",
+    "msg4": "¡No te rindas, {usuario}!",
+    "perfectMsg": "🎉 ¡Perfecto! No hubo errores",
+    "grades": {
+      "90": "🏆 EXCELENTE",
+      "75": "🥇 MUY BIEN",
+      "60": "⭐ BIEN",
+      "0": "📚 SIGUE PRACTICANDO"
+    }
+  },
+  "sonidos": {
+    "correcto": "aplausos",
+    "incorrecto": "buzz",
+    "confetti": true
+  },
+  "voz": {
+    "lang": "en-US",
+    "voiceName": "",
+    "rate": 0.88,
+    "pitch": 1.0
+  },
+  "tiempos": {
+    "respuestaCorrecta": 1500,
+    "respuestaIncorrecta": 5000
+  },
+  "puntosPorNivel": {
+    "nivel1": 10,
+    "nivel2": 20,
+    "nivel3": 30,
+    "nivel4": 15
+  },
+  "mensajesCorrectos": [
+    "✅ ¡Correcto! 🔍 +{puntos} puntos",
+    "💯 ¡Exacto! ¡Eres increíble, {usuario}! +{puntos} pts",
+    "🎉 ¡Caso resuelto! {racha}",
+    "🕵️ ¡Así se hace, detective {usuario}! +{puntos} pts",
+    "📜 ¡Expediente cerrado! +{puntos} pts"
+  ],
+  "mensajesIncorrectos": [
+    "❌ ¡Pista perdida! La respuesta era: <strong>{respuesta}</strong>",
+    "😅 Casi... Era: <strong>{respuesta}</strong>. ¡Sigue investigando!",
+    "🔍 ¡Fallaste! Era: <strong>{respuesta}</strong>"
+  ],
+  "vocabulario": [
+    {
+      "id": 1,
+      "nombreExtranjero": "city",
+      "español": "la ciudad",
+      "categoria": "Lugares"
+    },
+    {
+      "id": 2,
+      "nombreExtranjero": "market",
+      "español": "el mercado",
+      "categoria": "Lugares"
+    },
+    {
+      "id": 3,
+      "nombreExtranjero": "street",
+      "español": "la calle",
+      "categoria": "Lugares"
+    },
+    {
+      "id": 4,
+      "nombreExtranjero": "woods",
+      "español": "el bosque",
+      "categoria": "Lugares"
+    },
+    {
+      "id": 5,
+      "nombreExtranjero": "river",
+      "español": "el río",
+      "categoria": "Lugares"
+    },
+    {
+      "id": 6,
+      "nombreExtranjero": "tree",
+      "español": "el árbol",
+      "categoria": "Lugares"
+    },
+    {
+      "id": 7,
+      "nombreExtranjero": "park",
+      "español": "el parque",
+      "categoria": "Lugares"
+    },
+    {
+      "id": 8,
+      "nombreExtranjero": "look out of the window",
+      "español": "mirar por la ventana",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 9,
+      "nombreExtranjero": "run out of the office",
+      "español": "salir corriendo de la oficina",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 10,
+      "nombreExtranjero": "jump into the river",
+      "español": "saltar al río",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 11,
+      "nombreExtranjero": "pick something up",
+      "español": "recoger algo",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 12,
+      "nombreExtranjero": "bump into a tree",
+      "español": "tropezar contra un árbol",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 13,
+      "nombreExtranjero": "fall out of the tree",
+      "español": "caer de un árbol",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 14,
+      "nombreExtranjero": "go to the park",
+      "español": "ir al parque",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 15,
+      "nombreExtranjero": "pull",
+      "español": "jalar",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 16,
+      "nombreExtranjero": "leave the office",
+      "español": "salir de la oficina",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 17,
+      "nombreExtranjero": "climb up a tree",
+      "español": "subir un árbol",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 18,
+      "nombreExtranjero": "look in the mirror",
+      "español": "mirarse al espejo",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 19,
+      "nombreExtranjero": "look for something",
+      "español": "buscar algo",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 20,
+      "nombreExtranjero": "climb",
+      "español": "subir/escalar",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 21,
+      "nombreExtranjero": "jump",
+      "español": "saltar/brincar",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 22,
+      "nombreExtranjero": "leave",
+      "español": "salir/irse",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 23,
+      "nombreExtranjero": "put on",
+      "español": "ponerse (ropa)",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 24,
+      "nombreExtranjero": "take off",
+      "español": "quitarse",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 25,
+      "nombreExtranjero": "smile",
+      "español": "sonreír",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 26,
+      "nombreExtranjero": "mirror",
+      "español": "espejo",
+      "categoria": "Sustantivos"
+    },
+    {
+      "id": 27,
+      "nombreExtranjero": "away",
+      "español": "lejos/fuera",
+      "categoria": "Adverbios"
+    },
+    {
+      "id": 28,
+      "nombreExtranjero": "world's best",
+      "español": "mejor del mundo",
+      "categoria": "Adjetivos"
+    },
+    {
+      "id": 29,
+      "nombreExtranjero": "detective",
+      "español": "el detective/la detective",
+      "categoria": "Personas"
+    },
+    {
+      "id": 30,
+      "nombreExtranjero": "Help me!",
+      "español": "¡ayúdame!",
+      "categoria": "Frases"
+    },
+    {
+      "id": 31,
+      "nombreExtranjero": "look for",
+      "español": "buscar",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 32,
+      "nombreExtranjero": "old",
+      "español": "viejo/vieja",
+      "categoria": "Adjetivos"
+    },
+    {
+      "id": 33,
+      "nombreExtranjero": "pick up",
+      "español": "recoger",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 34,
+      "nombreExtranjero": "run out of",
+      "español": "quedarse sin",
+      "categoria": "Expresiones"
+    },
+    {
+      "id": 35,
+      "nombreExtranjero": "to run down (the street)",
+      "español": "correr por la calle",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 36,
+      "nombreExtranjero": "find",
+      "español": "encontrar",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 37,
+      "nombreExtranjero": "catch",
+      "español": "atrapar/agarrar",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 38,
+      "nombreExtranjero": "clever",
+      "español": "inteligente/listo",
+      "categoria": "Adjetivos"
+    },
+    {
+      "id": 39,
+      "nombreExtranjero": "come to",
+      "español": "venir a",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 40,
+      "nombreExtranjero": "live",
+      "español": "vivir",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 41,
+      "nombreExtranjero": "pipe",
+      "español": "la pipa/tubo",
+      "categoria": "Sustantivos"
+    },
+    {
+      "id": 42,
+      "nombreExtranjero": "smoke",
+      "español": "fumar/humo",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 43,
+      "nombreExtranjero": "violin",
+      "español": "el violín",
+      "categoria": "Sustantivos"
+    },
+    {
+      "id": 44,
+      "nombreExtranjero": "wear",
+      "español": "llevar (ropa)",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 45,
+      "nombreExtranjero": "a lot of / lots of",
+      "español": "muchos",
+      "categoria": "Cuantificadores"
+    },
+    {
+      "id": 46,
+      "nombreExtranjero": "call",
+      "español": "llamar/la llamada",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 47,
+      "nombreExtranjero": "Come on!",
+      "español": "¡Dale!/¡Ven!",
+      "categoria": "Frases"
+    },
+    {
+      "id": 48,
+      "nombreExtranjero": "solve",
+      "español": "resolver/solucionar",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 49,
+      "nombreExtranjero": "wait",
+      "español": "esperar",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 50,
+      "nombreExtranjero": "watch",
+      "español": "mirar/reloj",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 51,
+      "nombreExtranjero": "get up",
+      "español": "levantarse",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 52,
+      "nombreExtranjero": "become",
+      "español": "hacerse/volverse",
+      "categoria": "Verbos"
+    },
+    {
+      "id": 53,
+      "nombreExtranjero": "But it's true!",
+      "español": "¡Pero es verdad!",
+      "categoria": "Frases"
+    },
+    {
+      "id": 54,
+      "nombreExtranjero": "Go on",
+      "español": "seguir/continuar/sigue/continúa",
+      "categoria": "Frases"
+    },
+    {
+      "id": 55,
+      "nombreExtranjero": "Well done",
+      "español": "Bien hecho.",
+      "categoria": "Frases"
+    }
+  ]
+}
